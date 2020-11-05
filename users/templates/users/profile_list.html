@@ -1,0 +1,8 @@
+<h1>All profiles</h1>
+{% for profile in object_list %}
+<ul>
+<li>username: {{ profile.username }}</li>
+<li>Contact: {{ profile.contact }}</li>
+<li>Bio: {{ profile.bio }}</li>
+</ul>
+{% endfor %}
