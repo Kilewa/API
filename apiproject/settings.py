@@ -58,8 +58,6 @@ SECRET_KEY = '9jm1m-^42ra=0-cq@$vhhgixyq)#t2ftiv1vs&u9ojwu-unfsw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 ALLOWED_HOSTS=['*']
 
@@ -71,7 +69,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 INSTALLED_APPS = [
     'users',
     'knox',
-    'corsheaders'
+    'corsheaders',
     'rest_framework',
     'tinymce',
     'django.contrib.admin',
@@ -83,6 +81,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
