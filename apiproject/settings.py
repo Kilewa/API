@@ -68,10 +68,12 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'users',
+    'products',
     'knox',
     'corsheaders',
     'rest_framework',
     'tinymce',
+    'pyuploadcare.dj',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,6 +111,11 @@ TEMPLATES = [
         },
     },
 ]
+
+UPLOADCARE = {
+    'pub_key': '8ffcb735c33da16ff51a',
+    'secret': '66f5f6993e8701a05a53',
+}
 
 WSGI_APPLICATION = 'apiproject.wsgi.application'
 

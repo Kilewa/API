@@ -10,29 +10,12 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True)
-    bio = HTMLField(max_length=300,default="No bio")
-    profile_photo = models.ImageField(
-        default='default.jpg', upload_to='profile_pics')
-    contact = models.CharField(max_length=50,default='0700034034')
+    user_name = models.CharField(max_length=60, blank=True)
+    user_bio = HTMLField(max_length=300,default="No bio")
+    profile_photo = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    user_email = models.EmailField(max_length=255,blank=True)
+    create_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f'{self.user.username} Profile'
-
-    def save_profile(self):
-        '''
-        Saves profile instance to db
-        '''
-        self.save()
-
-    @classmethod
-    def get_by_id(cls,id):
-        profile = Profile.objects.get(user = id)
-        return profile
-    
-    @classmethod
-    def filter_by_id(cls,id): 
-        profile = Profile.objects.filter(user = id).first()
-        return profile
 
     @receiver(post_save, sender=User)
     def create_profile(sender, instance, created, **kwargs):
@@ -41,3 +24,9 @@ class Profile(models.Model):
     @receiver(post_save, sender=User) 
     def save_profile(sender,instance,**kwargs):
         instance.profile.save()  
+
+    @receiver(post_save, sender=User)
+    def update_profile_signal(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+        instance.profile.save()    
