@@ -1,2 +1,4 @@
 venv/
 .env
+
+apiproject/settings.py
