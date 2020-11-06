@@ -30,4 +30,4 @@ class Product_Comment(models.Model):
     comment = models.CharField(max_length=140)
     comment_date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.id      
+        return self.comment      

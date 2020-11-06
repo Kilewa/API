@@ -126,7 +126,7 @@ WSGI_APPLICATION = 'apiproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sokoline',
+        'NAME': 'wondermall',
         'USER': 'kilewa',
         'PASSWORD': 'george'
     }
